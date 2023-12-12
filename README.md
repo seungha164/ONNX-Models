@@ -19,3 +19,8 @@ Please review the model zoo, and if you locate the desired ONNX model, download 
 | Google Drive Link | Size | Output | Original Project | License  | Year | Conversion Script |
 | ------------- | ------------- | ------------- | ------------- |------------- |------------- | -- |
 | MIRNetv2LowLightEnhancement   |   -   |   Image(RGB 224x224)    |   [swz30/MIRNetv2](https://github.com/swz30/MIRNetv2)  | [ACADEMIC PUBLIC LICENSE](https://github.com/swz30/MIRNetv2/blob/main/LICENSE.md)  |2022| [jupyter notebook](./scripts/MIRNetv2_onnx.ipynb)
+
+# Thanks
+
+Images were taken from Disney images. <br>
+My project was inspired by [CoreML-Models](https://github.com/john-rocky/CoreML-Models/blob/master/README.md#mirnetv2) project
