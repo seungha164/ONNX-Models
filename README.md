@@ -35,6 +35,15 @@ Please review the model zoo, and if you locate the desired ONNX model, download 
 |-|-|-|-|-|-|
 |   [IS-Net](https://drive.google.com/drive/folders/1o5ph5eXhY0s7SCDJSSQNYa6WNOMH9PP8?usp=sharing)  |  1024 x 1024 |    [xuebinqin/DIS](https://github.com/xuebinqin/DIS) | [Apache](https://github.com/xuebinqin/DIS/blob/main/LICENSE.md) |   2022    |  [jupyter notebook](./scripts/conversion_isnet.ipynb)|
 
+### BisNet v1 & v2
+- Image Segmentation
+
+    <img width="300" src="./figures/bisenet/original.jpg"> 
+    <img width="300" src="./figures/bisenet/result.png"> 
+
+|   Name    |   Input Size    | Original Project    |   License | Year  | Conversion Scipt  |
+|-|-|-|-|-|-|
+|   [BiSeNet](https://drive.google.com/drive/folders/1b1FAQpIKLucqdLd8X4XCSI-5mT4hcNR5?usp=sharing)  |  512 x 512 |    [CoinCheung/BiSeNet](https://github.com/CoinCheung/BiSeNet) | [MIT](https://github.com/CoinCheung/BiSeNet/blob/master/LICENSE) |   2018(v1) / 2020(v2)    |  [jupyter notebook](./scripts/conversion_bisenet.ipynb)|
 
 # Thanks
 
