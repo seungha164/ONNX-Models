@@ -1,7 +1,7 @@
 # ONNX-Models
 Converted ONNX Model Zoo.
 
-<img width="1280" src="./figures/figure.png">
+<img width="1280" src="./overview.png">
 
 ONNX(Open Neural Network Exhange) is an open format built to represent machine learning models.
 
