@@ -26,6 +26,8 @@ Please review the model zoo, and if you locate the desired ONNX model, download 
 | MIRNetv2ContrastEnhancement   |   256 x 256  |   Image(RGB 256x256)    |   [swz30/MIRNetv2](https://github.com/swz30/MIRNetv2)  | [ACADEMIC PUBLIC LICENSE](https://github.com/swz30/MIRNetv2/blob/main/LICENSE.md)  |2022| [jupyter notebook](./scripts/mirnetv2_onnx.ipynb) | [onnx model](./onnx_models/mirnetv2.onnx) | [onnx 양자화 model](./onnx_models/mirntev2_quant.onnx) |
 | MIRNetv2_super_resolution   |   512 x 512  |   Image(RGB 512x512)    |   [swz30/MIRNetv2](https://github.com/swz30/MIRNetv2)  | [ACADEMIC PUBLIC LICENSE](https://github.com/swz30/MIRNetv2/blob/main/LICENSE.md)  |2022| [jupyter notebook](./scripts/mirnetv2_onnx.ipynb) | [onnx model](./onnx_models/mirnetv2/mirnetv2_sp.onnx) | [onnx 양자화 model](./onnx_models/mirnetv2/mirnetv2_sp_quant.onnx) |
 
+# Image Segmentation
+
 ### IS-Net
 - Highly Accurate Dichotomous Image Segmentation
 
@@ -50,6 +52,18 @@ Please review the model zoo, and if you locate the desired ONNX model, download 
 |-|-|-|-|-|-|
 |   [BiSeNet](https://drive.google.com/drive/folders/1b1FAQpIKLucqdLd8X4XCSI-5mT4hcNR5?usp=sharing)  |  512 x 512 |    [CoinCheung/BiSeNet](https://github.com/CoinCheung/BiSeNet) | [MIT](https://github.com/CoinCheung/BiSeNet/blob/master/LICENSE) |   2018(v1) / 2020(v2)    |  [jupyter notebook](./projects/bisenet/conversion_bisenet.ipynb)|
 |   [face-parsing](https://drive.google.com/drive/folders/117I6WXaFmVx_6v-GphBVBIMXg2zF-Mcm?usp=sharing)    | 512 x 512 |   [zllrunning/face-parsing.PyTorch](https://github.com/zllrunning/face-parsing.PyTorch?tab=readme-ov-file)    | [MIT](https://github.com/zllrunning/face-parsing.PyTorch?tab=MIT-1-ov-file#readme)    | 2019  | [jupyter notebook](./projects/face-parsing/conversion_faceparsing.ipynb)
+
+# Image2Image
+
+### AnimeGAN2Face_Paint_512_v2
+- Face Portrait v1
+
+    <img width="300" src="./projects/animeganv2/origin.jpg"> 
+    <img width="300" src="./projects/animeganv2/result.png"> 
+
+|   Name    |   Input Size    | Original Project    |   License | Year  | Conversion Scipt  |
+|-|-|-|-|-|-|
+|   [AnimeGANv2](https://drive.google.com/drive/folders/1ty6x_SVls_xQCWiworLdKRhGBtQApO4B?usp=sharing)  |  512 x 512 |    [bryandlee/animegan2-pytorch](https://github.com/CoinCheung/BiSeNet) | [MIT](https://github.com/bryandlee/animegan2-pytorch/blob/main/LICENSE) |   2021    |  [jupyter notebook](./projects/animeganv2/conversion.ipynb)|
 
 # Thanks
 
