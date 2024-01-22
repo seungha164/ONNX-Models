@@ -89,9 +89,9 @@ class Generator(nn.Module):
         )
         
     def forward(self, input):
-        #! pre processing
+        #! pre processing---
         input = input * 2 - 1
-
+        #! ------------------
         out = self.block_a(input)
         half_size = out.size()[-2:]
         out = self.block_b(out)
@@ -105,9 +105,10 @@ class Generator(nn.Module):
 
         out = self.out_layer(out)
         
-        #! post processing
+        #! post processing-----------
         out = (out.squeeze(0).clip(-1, 1) * 0.5 + 0.5) * 255
         out = out.transpose(0, 2)
         out = out.transpose(0, 1)
         out = out.type(torch.int32)
+        #! ---------------------------
         return out

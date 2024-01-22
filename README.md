@@ -65,6 +65,20 @@ Please review the model zoo, and if you locate the desired ONNX model, download 
 |-|-|-|-|-|-|
 |   [AnimeGANv2](https://drive.google.com/drive/folders/1ty6x_SVls_xQCWiworLdKRhGBtQApO4B?usp=sharing)  |  512 x 512 |    [bryandlee/animegan2-pytorch](https://github.com/CoinCheung/BiSeNet) | [MIT](https://github.com/bryandlee/animegan2-pytorch/blob/main/LICENSE) |   2021    |  [jupyter notebook](./projects/animeganv2/conversion.ipynb)|
 
+### Fast Neural Style Transfer
+- Style Transfer - cuphead, mosaic, starry night
+
+    <img width="300" src="./projects/fast-neural-style-transfer/origin.jpg"> 
+    <img width="300" src="./projects/fast-neural-style-transfer/result_cuphead.png">
+    <img width="300" src="./projects/fast-neural-style-transfer/result_mosaic.png"> 
+    <img width="300" src="./projects/fast-neural-style-transfer/result_starry_night.png"> 
+
+|   Name    |   Input Size    | Original Project    |   License | Year  | Conversion Scipt  |
+|-|-|-|-|-|-|
+|   [fast-neural-style-transfer-cuphead](https://drive.google.com/drive/folders/1ty6x_SVls_xQCWiworLdKRhGBtQApO4B?usp=sharing)  |  1024 x 1024 |    [eriklindernoren/Fast-Neural-Style-Transfer](https://github.com/eriklindernoren/Fast-Neural-Style-Transfer?tab=readme-ov-file) | [MIT](https://github.com/eriklindernoren/Fast-Neural-Style-Transfer/blob/master/LICENSE) |   2019    |  [jupyter notebook](./projects/fast-neural-style-transfer/conversion.ipynb)|
+|   [fast-neural-style-transfer-mosaic](https://drive.google.com/drive/folders/1ty6x_SVls_xQCWiworLdKRhGBtQApO4B?usp=sharing)  |  1024 x 1024 |    [eriklindernoren/Fast-Neural-Style-Transfer](https://github.com/eriklindernoren/Fast-Neural-Style-Transfer?tab=readme-ov-file) | [MIT](https://github.com/eriklindernoren/Fast-Neural-Style-Transfer/blob/master/LICENSE) |   2019    |  [jupyter notebook](./projects/fast-neural-style-transfer/conversion.ipynb)|
+|   [fast-neural-style-transfer-starry_night](https://drive.google.com/drive/folders/1ty6x_SVls_xQCWiworLdKRhGBtQApO4B?usp=sharing)  |  1024 x 1024 |    [eriklindernoren/Fast-Neural-Style-Transfer](https://github.com/eriklindernoren/Fast-Neural-Style-Transfer?tab=readme-ov-file) | [MIT](https://github.com/eriklindernoren/Fast-Neural-Style-Transfer/blob/master/LICENSE) |   2019    |  [jupyter notebook](./projects/fast-neural-style-transfer/conversion.ipynb)|
+
 # Thanks
 
 Images were taken from Disney images. <br>
