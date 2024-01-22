@@ -71,13 +71,22 @@ Please review the model zoo, and if you locate the desired ONNX model, download 
     <img width="300" src="./projects/fast-neural-style-transfer/origin.jpg"> 
     <img width="300" src="./projects/fast-neural-style-transfer/result_cuphead.png">
     <img width="300" src="./projects/fast-neural-style-transfer/result_mosaic.png"> 
-    <img width="300" src="./projects/fast-neural-style-transfer/result_starry_night.png"> 
+    <img width="300" src="./projects/fast-neural-style-transfer/result_starry_night.png">
+    <img width="300" src="./projects/fast-neural-style-transfer/result_lazy.png"> 
+    <img width="300" src="./projects/fast-neural-style-transfer/result_udnie.png">
+    <img width="300" src="./projects/fast-neural-style-transfer/result_wave.png"> 
+    <img width="300" src="./projects/fast-neural-style-transfer/result_tokyo_ghoul.png">
+    <img width="300" src="./projects/fast-neural-style-transfer/result_bayanihan.png"> 
 
 |   Name    |   Input Size    | Original Project    |   License | Year  | Conversion Scipt  |
 |-|-|-|-|-|-|
 |   [fast-neural-style-transfer-cuphead](https://drive.google.com/drive/folders/1ty6x_SVls_xQCWiworLdKRhGBtQApO4B?usp=sharing)  |  1024 x 1024 |    [eriklindernoren/Fast-Neural-Style-Transfer](https://github.com/eriklindernoren/Fast-Neural-Style-Transfer?tab=readme-ov-file) | [MIT](https://github.com/eriklindernoren/Fast-Neural-Style-Transfer/blob/master/LICENSE) |   2019    |  [jupyter notebook](./projects/fast-neural-style-transfer/conversion.ipynb)|
 |   [fast-neural-style-transfer-mosaic](https://drive.google.com/drive/folders/1ty6x_SVls_xQCWiworLdKRhGBtQApO4B?usp=sharing)  |  1024 x 1024 |    [eriklindernoren/Fast-Neural-Style-Transfer](https://github.com/eriklindernoren/Fast-Neural-Style-Transfer?tab=readme-ov-file) | [MIT](https://github.com/eriklindernoren/Fast-Neural-Style-Transfer/blob/master/LICENSE) |   2019    |  [jupyter notebook](./projects/fast-neural-style-transfer/conversion.ipynb)|
-|   [fast-neural-style-transfer-starry_night](https://drive.google.com/drive/folders/1ty6x_SVls_xQCWiworLdKRhGBtQApO4B?usp=sharing)  |  1024 x 1024 |    [eriklindernoren/Fast-Neural-Style-Transfer](https://github.com/eriklindernoren/Fast-Neural-Style-Transfer?tab=readme-ov-file) | [MIT](https://github.com/eriklindernoren/Fast-Neural-Style-Transfer/blob/master/LICENSE) |   2019    |  [jupyter notebook](./projects/fast-neural-style-transfer/conversion.ipynb)|
+|   [fast-neural-style-transfer-lazy](https://drive.google.com/drive/folders/1ty6x_SVls_xQCWiworLdKRhGBtQApO4B?usp=sharing)  |  1024 x 1024 |    [rrmina/fast-neural-style-pytorch](https://github.com/rrmina/fast-neural-style-pytorch) | - |   2018    |  [jupyter notebook](./projects/fast-neural-style-transfer/conversion2.ipynb)|
+|   [fast-neural-style-transfer-udnie](https://drive.google.com/drive/folders/1ty6x_SVls_xQCWiworLdKRhGBtQApO4B?usp=sharing)  |  1024 x 1024 |    [rrmina/fast-neural-style-pytorch](https://github.com/rrmina/fast-neural-style-pytorch) | - |   2018    |  [jupyter notebook](./projects/fast-neural-style-transfer/conversion2.ipynb)|
+|   [fast-neural-style-transfer-wave](https://drive.google.com/drive/folders/1ty6x_SVls_xQCWiworLdKRhGBtQApO4B?usp=sharing)  |  1024 x 1024 |    [rrmina/fast-neural-style-pytorch](https://github.com/rrmina/fast-neural-style-pytorch) | - |   2018    |  [jupyter notebook](./projects/fast-neural-style-transfer/conversion2.ipynb)|
+|   [fast-neural-style-transfer-tokyo_ghoul](https://drive.google.com/drive/folders/1ty6x_SVls_xQCWiworLdKRhGBtQApO4B?usp=sharing)  |  1024 x 1024 |    [rrmina/fast-neural-style-pytorch](https://github.com/rrmina/fast-neural-style-pytorch) | - |   2018    |  [jupyter notebook](./projects/fast-neural-style-transfer/conversion2.ipynb)|
+|   [fast-neural-style-transfer-bayanihan](https://drive.google.com/drive/folders/1ty6x_SVls_xQCWiworLdKRhGBtQApO4B?usp=sharing)  |  1024 x 1024 |    [rrmina/fast-neural-style-pytorch](https://github.com/rrmina/fast-neural-style-pytorch) | - |   2018    |  [jupyter notebook](./projects/fast-neural-style-transfer/conversion2.ipynb)|
 
 # Thanks
 
