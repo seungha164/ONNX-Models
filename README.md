@@ -92,5 +92,5 @@ Please review the model zoo, and if you locate the desired ONNX model, download 
 # Thanks
 
 Images were taken from Disney images. <br>
-My project was inspired by [CoreML-Models](https://github.com/john-rocky/CoreML-Models/blob/master/README.md#mirnetv2) project
+My project was inspired by [CoreML-Models](https://github.com/john-rocky/CoreML-Models/blob/master/README.md#mirnetv2) project. <br>
 You can contact me > noseungha164@gmail.com
