@@ -55,6 +55,17 @@ Please review the model zoo, and if you locate the desired ONNX model, download 
 
 # Image2Image
 
+### Anime2Sketch
+- A sketch extractor for illustration, anime art, manga
+
+    <img width="300" src="./projects/Anime2Sketch/origin.jpg"> 
+    <img width="300" src="./projects/Anime2Sketch/result.png"> 
+
+|   Name    |   Input Size    | Original Project    |   License | Year  | Conversion Scipt  |
+|-|-|-|-|-|-|
+|   [Anime2Sketch](https://drive.google.com/drive/folders/13q7haNxCEYPb11PLwShQj7_kR2-JuiSB?usp=sharing)  |  512 x 512 |    [Mukosame/Anime2Sketch](https://github.com/Mukosame/Anime2Sketch) | [MIT](http://github.com/Mukosame/Anime2Sketch#MIT-1-ov-file) |   2021    |  [jupyter notebook](./projects/Anime2Sketch/conversion.ipynb)|
+
+
 ### AnimeGAN2Face_Paint_512_v2
 - Face Portrait v1
 
