@@ -1,0 +1,237 @@
+<html lang="en">
+	<head>
+		<title>EXP WEBGPU for LLE</title>
+	</head>
+	<body>
+        <h1>ONNXRUNTIME Text to Image TEST</h1>
+        <h2>model name : Stable Diffusion</h2>
+        <img src="https://github.com/CompVis/stable-diffusion/raw/main/assets/stable-samples/txt2img/merged-0006.png", width="100%">
+        
+        <br>
+        <input type="text" placeholder="Enter your prompt" size="100%" id="prompt"/>
+		<!-- RGB, 마스크 이미지를 입력받는 버튼 -->
+        <!--<input type="file" id="imageUpload" accept="image/*">-->
+		<button type="button" id="inference">Generate image</button>
+
+
+		<!-- 입력 받은 이미지를 보여줄 컨테이너 -->
+		<!-- <div class="row">
+			<div id="rgb_div"></div>
+		</div>-->
+
+
+		<!-- 검증 결과물이 그려지는 캔버스 -->
+		<canvas id="predicted"></canvas>
+
+        <script async src="https://docs.opencv.org/4.x/opencv.js"></script>
+		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/mathjs@11.8.0/lib/browser/math.min.js"></script>
+        <script src="static/dist/ort.webgpu.min.js"></script>
+        <script src="static/js/utils.js"></script>
+        <script src="static/js/utils_bisenet.js"></script>
+        <!-- <script src="https://127.0.0.1:5500/../static/dist/ort.webgpu.min.js"></script> -->
+        <!-- <script src="https://127.0.0.1:5500/static/js/utils.js"></script>
+        <script src="https://127.0.0.1:5500/static/js/utils_bisenet.js"></script> -->
+		<script>
+        
+			// infer 버튼 누르면 시작 되는 함수
+			async function inference(sessionTe, sessionUnetPre, sessionUNet, sessionUnetPost, scheulers_session, sessionDe){
+            
+                // console.time("전처리");
+                // var text = document.getElementById("prompt").value;
+                // console.log(text);
+                
+                console.log('🍻[step 1] Text Encoder');
+                var rTensor = new Array(77).fill(0.2)
+                rTensor = new ort.Tensor("float32", rTensor, [1, 77]);
+                var results = await sessionTe.run({prompt : rTensor});
+                outTembed = results.out_sample.reshape([2, 77, 768]);
+                
+                console.log('🍻🍻[step 2] Denoising');
+                var latents = new Array(1*4*64*64).fill(0.2);
+                latents = new ort.Tensor("float32", latents, [1, 4, 64, 64]);
+                
+                timesteps = [981, 961, 961, 941, 921, 901, 
+                    881, 861, 841, 821, 801, 
+                    781, 761, 741, 721, 701,
+                    681, 661, 641, 621, 601,
+                    581, 561, 541, 521, 501,
+                    481, 461, 441, 421, 401,
+                    381, 361, 341, 321, 301,
+                    281, 261, 241, 221, 201,
+                    181, 161, 141, 121, 101,
+                    81, 61, 41, 21, 1,
+                ]
+                // step 2. Denoising
+                for(let i = 0; i < timesteps.length; i++){
+                    t = timesteps[i];
+                    //console.log(' start inference ');
+
+                    // 1) Unet
+                    /// a. pre
+                    var unetInput = await sessionUnetPre.run({"latents": latents});
+                    unetInput = unetInput.out_latents;
+                    var timestep =  new ort.Tensor("float32", [t,t]);
+                    
+                    /// b. unet
+                    console.log(sessionUNet);
+                    console.log(unetInput);
+                    console.log(outTembed);
+                    console.log(timestep);
+                    unetInput = new ort.Tensor("float32", new Array(2*4*64*64).fill(0.2), [2, 4, 64, 64]);
+                    outTembed = new ort.Tensor("float32", new Array(2*77*768).fill(0.2), [2, 77, 768]);
+                    noise_pred = await sessionUNet.run(
+                        {   "sample": unetInput,
+                            //"timestep" : timestep,
+                            "encoder_hidden_states" : outTembed
+                        }
+                    );
+                    /// c. post
+                    noise_pred = await sessionUnetPost.run({"noise_pred": unetInput});
+                    noise_pred = noise_pred.noise_pred_out;
+                    
+                    // 2) Scheduler
+                    if(t == 981){
+                        ets0 = noise_pred;
+                        var tmp = await scheulers_session[t].run(
+                            {
+                                'noise_pred' : noise_pred,
+                                'latents' : latents,
+
+                            }
+                        );
+                        latents = tmp.cur_sample;
+                        var cur_sample = tmp.prev_cur_latents;
+                    }
+                    else if(t == 961 && i == 1){
+                        latents = await scheulers_session['' + t + '_1'].run(
+                            {
+                                'noise_pred' : noise_pred,
+                                'latents' : cur_sample,
+                                'ets' : ets0
+                            }
+                        );
+                        latents = latents.prev_cur_latents;
+                        // console.log('out', latents);
+                        
+                    }
+                    else if(t == 961 && i == 2){
+                        latents = await scheulers_session['' + t + '_2'].run(
+                            {
+                                'noise_pred' : noise_pred,
+                                'latents' : latents,
+                                'ets' : ets0
+                            }
+                        );
+                        latents = latents.prev_cur_latents;
+                        ets1 = noise_pred;
+                        // ets = [ets, noise_pred];
+                    }
+                    else if(t == 941){
+                        var latents = await scheulers_session[t].run(
+                            {
+                                'noise_pred' : noise_pred,
+                                'sample' : latents,
+                                'ets1' : ets0,
+                                'ets2' : ets1
+                            }
+                        );
+                        latents = latents.prev_cur_latents;
+                        ets2 = noise_pred;
+                    }
+                    else{
+                        //console.log(t);
+                        // console.log(noise_pred);
+                        // console.log(latents);
+                        // console.log(ets0);
+                        // console.log(ets1);
+                        // console.log(ets2);
+                        //console.log(scheulers_session[t]);
+                        var latents = await scheulers_session[t].run(
+                            {
+                                'noise_pred' : noise_pred,
+                                'latents' : latents,
+                                'ets1' : ets0,
+                                'ets2' : ets1,
+                                'ets3' : ets2
+                            }
+                        );
+                        
+                        latents = latents.prev_cur_latents;
+                        ets0 = ets1;
+                        ets1 = ets2;
+                        ets2 = noise_pred;
+                    }
+                }
+            
+                // step 3. Decoder
+                console.log('🍻🍻[step 3] Decoder');
+                rTensor = new Array(4*64*64).fill(0.1);
+                rTensor = new ort.Tensor("float32", rTensor, [1, 4, 64, 64]);
+                const feeds3   = {latent_sample : latents};
+                console.log(' start inference ');
+                var results = await sessionDe.run(feeds3);
+                console.log(' end inferSence ');
+                console.log(results);
+                //* 후처리
+                postprocessing_and_html2(results.out_sample, 512, 512);
+			};
+            
+            async function main(){
+
+                // inference 함수를 실행할 버튼
+                var     prompt = document.getElementById("prompt");
+                var     infer_btn  = document.getElementById("inference");
+                
+                // 모델 로딩
+                // 1) text encoder 다운로드
+                console.log('✅ Text Encoder loading .. ')
+                const te_session = await load_model("static/models/dove/text_encoder/model-quant.onnx", 'cpu');
+                
+                console.log('✅ Denoising > Unet loading .. ')
+                const unet_pre_session = await load_model("static/models/dove/UNet_base/model-pre.onnx", 'cpu');
+                const unet_session = await load_model("static/models/dove/UNet-raw-dummy-quant.onnx", 'cpu');
+                // const unet_session = await load_model("static/models/dove/Unet-quant.onnx", 'cpu');
+                const unet_post_session = await load_model("static/models/dove/UNet_base/model-post.onnx", 'cpu');
+                
+                console.log('✅ Denoising > Schedulers loading .. ')
+                var schedulers = {}
+                var session = 0
+                for(var i=1 ; i<=981 ; i+=20){
+                    if(i == 981){
+                        session = await load_model("static/models/dove/step-981-quant.onnx", 'cpu');
+                        schedulers['' + i] = session   
+                    }
+                    else if(i == 961){
+                        session = await load_model("static/models/dove/schedulers/Scheduler-" + i + "_1.onnx", 'cpu');
+                        schedulers[''+i +'_1'] = session
+                        session = await load_model("static/models/dove/schedulers/Scheduler-" + i + "_2.onnx", 'cpu');
+                        schedulers[''+i +'_2'] = session
+                    }
+                    else if(i == 941){
+                        // console.log("static/models/dove/schedulers/step-" + i + ".onnx");
+                        session = await load_model("static/models/dove/schedulers/step-" + i + ".onnx", 'cpu');
+                        schedulers['' + i] = session
+                    }
+                    else{
+                        session = await load_model("static/models/dove/schedulers/step-" + i + ".onnx", 'cpu');
+                        schedulers['' + i] = session
+                    }
+                }
+                
+                console.log('✅ VAE Decoder loading .. ')
+                const de_session = await load_model("static/models/dove/decoder/model-quant.onnx", 'cpu');
+
+                // inference 버튼이 눌리면 실행되는 이벤트
+                infer_btn.addEventListener("click", function(){
+                    inference(te_session, unet_pre_session, unet_session, unet_post_session, schedulers, de_session).then();
+                });
+                
+                console.log('준비 완료');
+            }
+
+            main();
+		</script>
+
+	</body>
+</html>
