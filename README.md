@@ -100,6 +100,9 @@ Please review the model zoo, and if you locate the desired ONNX model, download 
 |   [fast-neural-style-transfer-tokyo_ghoul](https://drive.google.com/drive/folders/1ty6x_SVls_xQCWiworLdKRhGBtQApO4B?usp=sharing)  |  1024 x 1024 |    [rrmina/fast-neural-style-pytorch](https://github.com/rrmina/fast-neural-style-pytorch) | - |   2018    |  [jupyter notebook](./projects/fast-neural-style-transfer/conversion2.ipynb)|
 |   [fast-neural-style-transfer-bayanihan](https://drive.google.com/drive/folders/1ty6x_SVls_xQCWiworLdKRhGBtQApO4B?usp=sharing)  |  1024 x 1024 |    [rrmina/fast-neural-style-pytorch](https://github.com/rrmina/fast-neural-style-pytorch) | - |   2018    |  [jupyter notebook](./projects/fast-neural-style-transfer/conversion2.ipynb)|
 
+### Stable diffusion
+The code will be distributed soon 🚧
+
 # Thanks
 
 Images were taken from Disney images. <br>
