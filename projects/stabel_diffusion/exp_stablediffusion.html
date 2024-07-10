@@ -189,7 +189,7 @@
                 console.log('✅ Denoising > Unet loading .. ')
                 const unet_pre_session = await load_model("static/models/dove/UNetPre/model-quant.onnx", 'cpu');
                 // const unet_session = await load_model("static/models/dove/UNet-raw-dummy-quant.onnx", 'cpu');
-                // const unet_session = await load_model("static/models/dove/UNetRaw/model-quant.onnx", 'cpu');
+                const unet_session = await load_model("static/models/dove/UNetRaw/model-quant.onnx", 'cpu');
                 const unet_post_session = await load_model("static/models/dove/UNetPost/model-quant.onnx", 'cpu');
                 // const unet_post_session = await load_model("static/models/dove/UNet_base/model-post.onnx", 'cpu');
                 
@@ -234,7 +234,7 @@
 
                 // inference 버튼이 눌리면 실행되는 이벤트
                 infer_btn.addEventListener("click", function(){
-                    inference(te_session, unet_pre_session, unet_post_session, unet_post_session, schedulers, de_session).then();
+                    inference(te_session, unet_pre_session, unet_session, unet_post_session, schedulers, de_session).then();
                 });
                 
                 console.log('준비 완료');
