@@ -12,7 +12,7 @@ Please review the model zoo, and if you locate the desired ONNX model, download 
 # Image Restoration
 
 ### MIRNetv2
-- constrast enhancement
+- constrast enhancement 
 
     <img width="300" src="./projects/mirnetv2/disney01.png"> 
     <img width="300" src="./projects/mirnetv2/disney01_result.png"> 

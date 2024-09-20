@@ -1,2 +1,5 @@
 projects/stabel_diffusion/onnx-models/
 projects/stabel_diffusion/onnx_models_cuda/
+projects/stabel_diffusion/code_with_diffusers/onnx_models_diffusers/
+projects/stabel_diffusion/onnx_model_by_diffusers/
+projects/stabel_diffusion/onnx_models_cpu/
